@@ -16,6 +16,7 @@
     "express-favicon": "^2.0.1",
     "express-fileupload": "^1.0.0-alpha.1",
     "mysql": "^2.16.0",
-    "req-flash": "0.0.3"
+    "req-flash": "0.0.3",
+    "serve-favicon": "^2.5.0"
   }
 }

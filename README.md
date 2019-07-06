@@ -1,7 +1,9 @@
-"# mysql-crud-app"
-#
+# An_mysql-app"
+
 # start : node app.js
-# start : NODE_ENV=development node app.js
+# .start : NODE_ENV=development node app.js
+. start : nodemon app.js
+
 
 #INSTALL
 mkdir node-mysql-crud-app 
