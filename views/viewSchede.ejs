@@ -1,0 +1,50 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="mt-5">Lista Schede</h1>
+            <p class="lead">Complete list</p>        
+            <div class="table-wrapper">
+                <% if (scheda.length > 0) {%>
+                <table id="schedaTable" class="table table-hovered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+
+                            <th data-field="tipo" data-filter-control="select">Status</th>
+                            <th scope="col">articolo</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Fornitore</th>
+                            <th scope="col">Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% scheda.forEach((scheda, index) => {  
+                        scheda.image="DSC_0138.JPG"; %>
+
+                        <tr>
+                            <th><%= scheda.idscheda %></th>
+                            <td><img src="/assets/img/<%= scheda.image %>" class="rounded-circle scheda-img" alt="">
+                            </td>
+                            <td><%= scheda.tipo %></td>
+                            <td><%= scheda.articolo %></td>
+                            <td><%= scheda.ragionesociale %></td>
+                            <td>
+                                <a href="/editScheda/<%= scheda.idscheda %>" target="_blank" rel="noopener"
+                                    class="btn btn-sm btn-success">Edit</a>
+                                <a href="/deleteScheda/<%= scheda.idscheda %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                <p class="text-center">No scheda found. Go <a href="/add">here</a> to add scheda.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

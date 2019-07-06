@@ -1,0 +1,52 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="mt-5">Lista Schede</h1>
+            <p class="lead">Complete list</p>
+            <a class="btn btn-primary" href="/ordini/creaOrdinazione" role="button">Crea un nuovo ordine</a>        
+            <div class="table-wrapper">
+                <% if (ordine.length > 0) {%>
+                <table id="ordineTable" class="table table-hovered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th data-field="tipo" data-filter-control="select">Status</th>
+                            <th scope="col">dataordine</th>
+                            <th scope="col">costo</th>
+                            <th scope="col">dataUM</th>
+                            <th scope="col">stato</th>
+                            <th scope="col">descrizione</th>
+                            <th scope="col">Operazioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% ordine.forEach((ordine, index) => {  
+                        ordine.image="DSC_0138.JPG"; %>
+
+                        <tr>
+                            <th><%= ordine.idordine %></th>
+                            <td><img src="/assets/img/<%= ordine.image %>" class="rounded-circle scheda-img" alt=""></td>
+                            <td><%= ordine.dataordine %></td>
+                            <td><%= ordine.costo %></td>
+                            <td><%= ordine.dataUM %></td>
+                            <td><%= ordine.stato %></td>
+                            <td><%= ordine.descrizione %></td>
+                            <td>
+                                <a href="/ordini/viewDettaglioOrdinazione/<%= ordine.idordine %>" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/ordini/deleteOrdinazione/<%= ordine.idordine %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                <p class="text-center">No ordine found. Go <a href="/ordini/creaOrdinazione">here</a> to add ordine.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
