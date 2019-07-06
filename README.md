@@ -7,6 +7,6 @@
 mkdir node-mysql-crud-app 
 cd node-mysql-crud-app 
 npm init
-npm install express express-fileupload body-parser mysql ejs req-flash dotenv --save
+npm install express express-favicon express-fileupload body-parser mysql ejs req-flash dotenv --save
 npm install nodemon -g
 
