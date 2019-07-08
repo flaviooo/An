@@ -12,3 +12,7 @@ npm init
 npm install express express-favicon express-fileupload body-parser mysql ejs req-flash dotenv --save
 npm install nodemon -g
 
+@ DUMP
+ var exec = require('child_process').exec;
+var child = exec(' mysqldump -u root -p password angelina > dumpfilename.sql');
+

@@ -39,7 +39,6 @@ app.set('view engine', 'ejs'); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(fileUpload()); // configure fileupload
 
