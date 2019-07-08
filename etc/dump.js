@@ -32,10 +32,12 @@ if("--export"===operationType){
 //C:\xampp\mysql\bin\mysqldump.exe --defaults-file="c:\users\fl\appdata\local\temp\tmpzsl0wv.cnf"  --user=${exportFrom.user} --host=${exportFrom.host} --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --skip-triggers "${exportFrom.database}"
 //exec(`"C:\\xampp\\mysql\\bin\\mysqldump.exe" -u${exportFrom.user} -p${exportFrom.password} -h${exportFrom.host} --compact ${exportFrom.database} > ${dumpFile}`, (err, stdout, stderr) => {
 //    exec(`"C:\\xampp\\mysql\\bin\\mysqldump.exe" --defaults-file="c:\\users\\fl\\appdata\\local\\temp\\tmpzsl0wv.cnf" --user=${exportFrom.user} --host=${exportFrom.host} --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --skip-triggers ${exportFrom.database} > ${dumpFile}`, (err, stdout, stderr) => {
-exec(`"C:\\xampp\\mysql\\bin\\mysqldump.exe"  --user=${exportFrom.user} --host=${exportFrom.host} --password=${exportFrom.password} --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --skip-triggers ${exportFrom.database} > ${dumpFile}`, (err, stdout, stderr) => {
+exec(`"C:\\xampp\\mysql\\bin\\mysqldump.exe"  --user=${exportFrom.user} --host=${exportFrom.host} --password=${exportFrom.password} --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --skip-triggers ${exportFrom.database} > ${dumpFile}`, (err, stdout, stderr) => 
+{
 	if (err) { console.error(`exec error: ${err}`); return; }
 	
 	console.log(`Now, importing data to the ${importTo.database} database`);
+});
 }
 //if("--import"===operationType){    
 	// Import the database.
@@ -46,4 +48,4 @@ exec(`"C:\\xampp\\mysql\\bin\\mysqldump.exe"  --user=${exportFrom.user} --host=$
     }); */
 //}
 
-});
+//});
