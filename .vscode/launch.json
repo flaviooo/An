@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}\\etc\\mySQLtool\\dump.js",
+            "args": [
+                "--import",  
+              //"--import", "${workspaceFolder}\\etc\\mySQLtool\\dumps\\dump.sql"
+              // "--export"
+            ],
+            "runtimeArgs": [
+            //    "${workspaceFolder}\\etc\\mySQLtool\\dumps\\dump.sql"
+            ],
+            "envFile": "${workspaceFolder}\\etc\\mySQLtool\\.env"
+        }
+    ]
+}

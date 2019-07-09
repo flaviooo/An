@@ -52,6 +52,6 @@ default:
     console.log('- Configure .env file');
     console.log('Usage: for export: node dump.js --export');
     console.log('Usage: for import: node dump.js --import  -->default value DUMPFILE_IMPORT');
-    console.log('Usage: for import: node dump.js --import dump.sql -->PATH FOLDER: dumps/');
+    console.log('Usage: for import: node dump.js --import dump.sql -->Path file dumps/');
 
 }
