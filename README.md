@@ -11,7 +11,7 @@
 * npm run nodemon
 
 
-#INSTALL
+# INSTALL
 mkdir node-mysql-crud-app 
 cd node-mysql-crud-app 
 npm init
