@@ -1,10 +1,10 @@
 {
-  "name": "mysql-crud-app",
+  "name": "an",
   "version": "1.0.0",
-  "description": "",
+  "description": "* npm run Angelina\r * npm run production\r * npm run nodemon",
   "main": "app.js",
   "scripts": {
-    "nodemon" : "nodemon app.js",
+    "nodemon": "nodemon app.js",
     "production": "NODE_ENV=development node app.js",
     "development": "set NODE_ENV=development node app.js",
     "Angelina": "node app.js",
@@ -13,17 +13,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
     "express-favicon": "^2.0.1",
-    "express-fileupload": "^1.0.0-alpha.1",
-    "mysql": "^2.16.0",
+    "express-fileupload": "^1.1.5",
+    "mysql": "^2.17.1",
     "req-flash": "0.0.3",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flaviooo/An.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flaviooo/An/issues"
+  },
+  "homepage": "https://github.com/flaviooo/An#readme"
 }
