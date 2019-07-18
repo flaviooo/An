@@ -1,4 +1,5 @@
 var dotenv = require('dotenv').config({path: __dirname + '/.env'})
+console.log(dotenv);
 const express = require('express');
 //const favicon = require('express-favicon');
 var favicon = require('serve-favicon');
@@ -7,15 +8,21 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
 const app = express();
+//const cors = require('cors')
 
 const {getHomePage} = require('./routes/index');
 
 const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const {addSchedaPage, addScheda, deleteScheda, editScheda, editSchedaPage, viewScheda} = require('./routes/scheda');
 const {viewSchedaOrdinePage,saveSchedaOrdinePage} = require('./routes/ordineScheda');
-const {viewlistaOrdinazioniPage, viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione,deleteOrdinazione} = require('./routes/ordinazioni');
+const {viewlistaOrdinazioniPage, viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione,deleteOrdinazione,setDettaglioOrdinazione} = require('./routes/ordinazioni');
 const port = 3000;
 
+if(process.env.NODE_ENV === 'production') {
+    console.log('We are running in production mode');
+} else {
+    console.log('We are running in '+process.env.NODE_ENV+' mode');
+}
 const db = mysql.createConnection ({
     host: process.env.HOST,
     user: process.env.USER,
@@ -50,6 +57,12 @@ app.get('/viewSchede', viewScheda);
 
 app.get('/ordini', viewlistaOrdinazioniPage);
 app.get('/ordini/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
+//app.post('/ordini/viewDettaglioOrdinazione/:id/', setDettaglioOrdinazione);
+app.post('/ordini/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
+app.post('/ordini/viewDettaglioOrdinazione/:idOrdine', viewDettaglioOrdinazione);
+app.post('/ordini/viewDettaglioOrdinazione/:id/:idOrdine/', setDettaglioOrdinazione);
+
+
 
 app.get('/ordini/creaOrdinazione', creaOrdinazione);
 app.post('/ordini/saveOrdinazione', saveOrdinazione);

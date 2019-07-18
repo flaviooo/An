@@ -8,7 +8,7 @@ module.exports = {
             if (err) {
                 res.redirect('/');
             }
-           // console.log(result);
+           console.log(result);
             res.render('index.ejs', {
                 title: "Welcome to fl | View articoli ", articoli: result
             });
