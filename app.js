@@ -63,7 +63,6 @@ app.post('/ordini/viewDettaglioOrdinazione/:idOrdine', viewDettaglioOrdinazione)
 app.post('/ordini/viewDettaglioOrdinazione/:id/:idOrdine/', setDettaglioOrdinazione);
 
 
-
 app.get('/ordini/creaOrdinazione', creaOrdinazione);
 app.post('/ordini/saveOrdinazione', saveOrdinazione);
 app.get('/ordini/deleteOrdinazione/:id', deleteOrdinazione);

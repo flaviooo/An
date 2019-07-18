@@ -4,7 +4,10 @@ $(document).ready(function () {
   $('#schedaTable').DataTable(
     { pageLength: 50 }
   );
-
+/*   $('#ordineTable').DataTable(
+    { pageLength: 50 }
+  );
+ */
   var a = $("input[type='number']");
   $(":input").bind('keyup mouseup', function (event) {
     event.preventDefault(); //prevent default action

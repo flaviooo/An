@@ -42,9 +42,9 @@ viewDettaglioOrdinazione: (req, res) => {
     " FROM angelina.an_dettaglioordine doo"+
     " LEFT JOIN angelina.an_articoli a on doo.idarticolo = a.idarticolo"+
     " LEFT JOIN angelina.an_fornitori f on a.ksfornitore = f.idfornitore"+
-    " where '" + schedaId + "' ";
+    " where idOrdine= '" + schedaId + "' ";
     db.query(query, (err, result) => {
-      //  console.log(result);
+        console.log(query);
         if (err) {
             return res.status(500).send(err);
         }

@@ -16,7 +16,8 @@
             "runtimeArgs": [
             //    "${workspaceFolder}\\etc\\mySQLtool\\dumps\\dump.sql"
             ],
-            "envFile": "${workspaceFolder}\\etc\\mySQLtool\\.env"
+            //"envFile": "${workspaceFolder}\\etc\\mySQLtool\\.env"
+            "envFile": "${workspaceFolder}\\.env"
         }
     ]
 }
