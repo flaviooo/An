@@ -1,21 +1,17 @@
 NODE_ENV=development
 
-
 HOST=localhost
 USER=root
 PASSWORD=password
 DATABASE=angelina
 
-
 DUMPARCHIVIEPATH_EXPORT=etc\mySQLtool\\dumps\
-
 
 DUMPHOST_EXPORT=localhost
 DUMPUSER_EXPORT=root
 DUMPDATABASE_EXPORT=angelina
 DUMPPASSWORD_EXPORT=password
 PATHMYSQLCMD_EXPORT=C:\xampp\mysql\bin\mysqldump.exe
-
 
 DUMPHOST_IMPORT=127.0.0.1
 DUMPUSER_IMPORT=root
