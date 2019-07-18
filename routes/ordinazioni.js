@@ -100,19 +100,21 @@ let schedaId = idOrdine;
  });
     });
 },
-
 deleteOrdinazione: (req, res) => {
     let schedaId = req.params.id;
    // let query = "SELECT * FROM angelina.an_schede WHERE idscheda = '" + schedaId + "' ";
-    query = " DELETE FROM angelina.an_ordini WHERE idordine = '" + schedaId + "';";
+   
+   // query = " DELETE FROM angelina.an_ordini WHERE idordine = '" + schedaId + "';";
+  let query = " DELETE FROM `angelina`.`an_ordini` WHERE (`idordine` = '" + schedaId + "')";
+  console.log(query);
     db.query(query, (err, result) => {
         console.log(result);
         if (err) {
             return res.status(500).send(err);
         }
-        /*      visualizzo la lita ordini*/     
-        module.exports.viewlistaOrdinazioniPage(req, res);
-     
+        /*      visualizzo la lita ordini*/ 
+        res.redirect('/ordini');  
+       // module.exports.viewlistaOrdinazioniPage(req, res);
     });
 },
 creaOrdinazione: (req, res) => {
@@ -122,6 +124,8 @@ creaOrdinazione: (req, res) => {
   let query2 = "SET @ID_ORDINE=(IFNULL((SELECT MAX(idordine)+1 FROM `angelina`.`an_ordini`), 1));";
   let query3 = "INSERT INTO `angelina`.`an_ordini` (`dataordine`, `costo`, `dataUM`, `stato`, `descrizione`) VALUES (CURRENT_DATE(), '0.00',  NOW(), 'UNDEFINED', concat(@ID_ORDINE,concat('_Ordine_', DATE_FORMAT(dataUM, '%Y-%m-%d'))));";
   let query4 = "unlock tables;";
+  
+  let query5 = "SET FOREIGN_KEY_CHECKS=1;";
   
   //let queryInsert0 = "INSERT INTO `angelina`.`an_dettaglioordine` (`idOrdine`, `idFornitore`, `idArticolo`, `tipo`, `quantita`, `prezzo`, `utente`) VALUES (@ID_ORDINE, '1', '1', 'ANTIPASTI', 0, 11.09, 'utente_1'), (@ID_ORDINE, '1', '1', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '1', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '1', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '1', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '1', 'ANTIPASTI', 0, 0.00, 'utente_1'), (@ID_ORDINE, '1', '4', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '4', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '4', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '4', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '4', 'ANTIPASTI', 0, 0.00, 'utente_1'), (@ID_ORDINE, '1', '5', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '5', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '5', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '5', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '5', 'ANTIPASTI', 0, 0.00, 'utente_1'), (@ID_ORDINE, '1', '6', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '6', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '6', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '6', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '6', 'ANTIPASTI', 0, 0.00, 'utente_1');";
   let queryInsert0 = "INSERT INTO `angelina`.`an_dettaglioordine` (`idOrdine`, `idFornitore`, `idArticolo`, `tipo`, `quantita`, `prezzo`, `utente`) VALUES (@ID_ORDINE, '1', '1', 'ANTIPASTI', 0, 11.09, 'utente_1'), (@ID_ORDINE, '1', '1', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '1', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '1', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '1', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '1', 'ANTIPASTI', 0, 0.00, 'utente_1'), (@ID_ORDINE, '1', '4', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '4', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '4', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '4', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '4', 'ANTIPASTI', 0, 0.00, 'utente_1'), (@ID_ORDINE, '1', '5', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '5', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '5', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '5', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '5', 'ANTIPASTI', 0, 0.00, 'utente_1'), (@ID_ORDINE, '1', '6', 'ANTIPASTI', 0, 11.32, 'utente_1'), (@ID_ORDINE, '2', '6', 'ANTIPASTI', 0, 19.77, 'utente_1'), (@ID_ORDINE, '4', '6', 'ANTIPASTI', 0, 14.90, 'utente_1'), (@ID_ORDINE, '5', '6', 'ANTIPASTI', 0, 1.70, 'utente_1'), (@ID_ORDINE, '6', '6', 'ANTIPASTI', 0, 0.00, 'utente_1');";
@@ -206,6 +210,13 @@ creaOrdinazione: (req, res) => {
                           }
                          
                       });
+                      db.query(query5, (err, result) => {
+                        console.log(result);
+                        if (err) {
+                            return res.status(500).send(err);
+                        }
+                       
+                    });
 
                      
                     if (error) {

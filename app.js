@@ -1,5 +1,5 @@
 var dotenv = require('dotenv').config({path: __dirname + '/.env'})
-console.log(dotenv);
+//console.log(dotenv);
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -7,7 +7,6 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 let configDB = require('./etc/configDB/configDB.js');
 const mysql = require('mysql');
-
 const app = express();
 //const cors = require('cors')
 
