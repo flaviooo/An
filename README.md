@@ -12,11 +12,12 @@
 
 
 # INSTALL
-mkdir node-mysql-crud-app 
-cd node-mysql-crud-app 
-npm init
+mkdir AN
+git clone https://github.com/flaviooo/An.git
+cd AN
+npm init 
 npm install express express-favicon express-fileupload body-parser mysql ejs req-flash dotenv --save
-npm install axios 
+-- npm install axios 
 -- npm install cors
 npm install nodemon -g
 
