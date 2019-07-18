@@ -1,17 +1,17 @@
 var dotenv = require('dotenv').config({path: __dirname + '/.env'})
 console.log(dotenv);
 const express = require('express');
-//const favicon = require('express-favicon');
-var favicon = require('serve-favicon');
+const path = require('path');
+const favicon = require('serve-favicon');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
+let configDB = require('./etc/configDB/configDB.js');
 const mysql = require('mysql');
-const path = require('path');
+
 const app = express();
 //const cors = require('cors')
 
 const {getHomePage} = require('./routes/index');
-
 const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const {addSchedaPage, addScheda, deleteScheda, editScheda, editSchedaPage, viewScheda} = require('./routes/scheda');
 const {viewSchedaOrdinePage,saveSchedaOrdinePage} = require('./routes/ordineScheda');
@@ -23,13 +23,8 @@ if(process.env.NODE_ENV === 'production') {
 } else {
     console.log('We are running in '+process.env.NODE_ENV+' mode');
 }
-const db = mysql.createConnection ({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-});
 
+const db = mysql.createConnection(configDB);
 // connect to database
 db.connect((err) => {
     if (err) {
