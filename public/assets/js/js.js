@@ -20,25 +20,23 @@ $(document).ready(function () {
     let url_setOrder = "/ordini/viewDettaglioOrdinazione/" + idDettaglio + "/" + idOrdine;
     console.log("idDettaglio: " + url_setOrder);
 
-    $.post(url_setOrder, function (){});
-    /* 
+//    $.post(url_setOrder, function (){});
+     $.post(url_setOrder, function() { alert( "success" ); })
+    .done(function (result, status, xhr) {
+
+       var m= $('.alert').html(result);
+     //  alert alert-success
+     $(".alert" ).replaceWith( '<div class="alert alert-success" role="alert"><h3>Yeah!!</h3></div>');
        
-    $.ajax({
-      url: '/ordini/viewDettaglioOrdinazione',
-      dataType: 'text',
-      type: 'post',
-      contentType: 'application/x-www-form-urlencoded',
-      data:'2/2' ,
-      success: function( data, textStatus, jQxhr ){
-        console.log(data );
-      },
-      error: function( jqXhr, textStatus, errorThrown ){
-          console.log( errorThrown );
-      }
+    })
+    .fail(function (xhr, status, error) {
+        $(".alert").html("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+        //alert alert-danger
+    })
+    .always(function(result, status, xhr) {
+      $(".alert" ).replaceWith( '<div class="alert alert-success" role="alert"><h3>Yeah!!</h3></div>');
     });
-     */     /* $.post( "/ordini/viewDettaglioOrdinazione/", function(idDettaglio, idOrdine) {
-         alert( "Data Loaded: " + idDettaglio );
-         alert( "Data Loaded: " + idOrdine );
-       }); */
+   
+
   });
 });
