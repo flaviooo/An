@@ -14,7 +14,7 @@ const {getHomePage} = require('./routes/index');
 const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const {addSchedaPage, addScheda, deleteScheda, editScheda, editSchedaPage, viewScheda} = require('./routes/scheda');
 const {viewSchedaOrdinePage,saveSchedaOrdinePage} = require('./routes/ordineScheda');
-const {viewlistaOrdinazioniPage, viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione,deleteOrdinazione,setDettaglioOrdinazione} = require('./routes/ordinazioni');
+const {viewlistaOrdinazioniPage, subDettaglioOrdinazione,viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione,deleteOrdinazione,setDettaglioOrdinazione} = require('./routes/ordinazioni');
 const port = 3000;
 
 if(process.env.NODE_ENV === 'production') {
@@ -51,11 +51,10 @@ app.get('/viewSchede', viewScheda);
 
 app.get('/ordini', viewlistaOrdinazioniPage);
 app.get('/ordini/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
-//app.post('/ordini/viewDettaglioOrdinazione/:id/', setDettaglioOrdinazione);
 app.post('/ordini/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
 app.post('/ordini/viewDettaglioOrdinazione/:idOrdine', viewDettaglioOrdinazione);
 app.post('/ordini/viewDettaglioOrdinazione/:id/:idOrdine/', setDettaglioOrdinazione);
-
+app.post('/ordini/viewDettaglioOrdinazione/sub/:id/:idOrdine/', subDettaglioOrdinazione);
 
 app.get('/ordini/creaOrdinazione', creaOrdinazione);
 app.post('/ordini/saveOrdinazione', saveOrdinazione);

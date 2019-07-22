@@ -63,7 +63,40 @@ module.exports = {
       if (err) {
         return res.status(500).send(err);
       }
-      console.log(result);
+      //console.log(result);
+      //let redirect = "/ordini/viewDettaglioOrdinazione/" + idOrdine;
+      //console.log(redirect);
+      //res.send({redirectUrl: redirect});
+      //res.redirect(redirect);
+      let schedaId = idOrdine;
+      query = " SELECT idDettaglioOrdine, tipo, quantita, prezzo, utente, a.articolo, a.prezzounitario , f.ragionesociale" +
+        " FROM angelina.an_dettaglioordine doo" +
+        " LEFT JOIN angelina.an_articoli a on doo.idarticolo = a.idarticolo" +
+        " LEFT JOIN angelina.an_fornitori f on a.ksfornitore = f.idfornitore" +
+        " where '" + schedaId + "' ";
+      db.query(query, (err, result) => {
+        //  console.log(result);
+        if (err) {
+          return res.status(500).send(err);
+        }
+
+        res.render('viewOrdinazioniById.ejs', {
+          title: "Welcome to ANies | Ordini"
+          , ordine: result
+          , message: ''
+        });
+      });
+    });
+  },
+  subDettaglioOrdinazione: (req, res) => {
+    let schedaId = req.params.id;
+    let idOrdine = req.params.idOrdine;
+    let queryset = "UPDATE angelina.an_dettaglioordine SET quantita = quantita - 1 WHERE idDettaglioOrdine = '" + schedaId + "' ";
+    db.query(queryset, (err, result) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+     console.log(queryset);
       let redirect = "/ordini/viewDettaglioOrdinazione/" + idOrdine;
       console.log(redirect);
       //res.send({redirectUrl: redirect});
