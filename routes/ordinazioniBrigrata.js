@@ -11,7 +11,7 @@ module.exports = {
       if (err) {
         return res.status(500).send(err);
       }
-      res.render('viewOrdinazioni.ejs', {
+      res.render('viewOrdinazioniBrigata.ejs', {
         title: "Welcome to ANies | Ordini"
         , ordine: result
         , message: ''

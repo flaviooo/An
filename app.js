@@ -36,7 +36,10 @@ global.db = db;
 
 // configure middleware
 app.set('port', process.env.port || port); // set express to use this port
-app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
+app.set('views', [(__dirname + '/views'),
+                   path.join(__dirname, 'views/brigata/')
+                ]);
+
 app.set('view engine', 'ejs'); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
@@ -59,8 +62,8 @@ app.post('/ordini/saveOrdinazione', saveOrdinazione);
 app.get('/ordini/deleteOrdinazione/:id', deleteOrdinazione);
 
 app.get('/ordiniBrigata', viewlistaOrdinazioniBriPage);
-app.get('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
-app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
+app.get('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazioneBri);
+app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazioneBri);
 app.post('/ordiniBrigata/viewDettaglioOrdinazione/:idOrdine', viewDettaglioOrdinazioneBri);
 app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id/:idOrdine/', addDettaglioOrdinazioneBri);
 app.post('/ordiniBrigata/viewDettaglioOrdinazione/sub/:id/:idOrdine/', subDettaglioOrdinazioneBri);
