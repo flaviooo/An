@@ -55,7 +55,7 @@ module.exports = {
       });
     });
   },
-  setDettaglioOrdinazione: (req, res) => {
+  addDettaglioOrdinazione: (req, res) => {
     let schedaId = req.params.id;
     let idOrdine = req.params.idOrdine;
     let queryset = "UPDATE angelina.an_dettaglioordine SET quantita = quantita + 1 WHERE idDettaglioOrdine = '" + schedaId + "' ";

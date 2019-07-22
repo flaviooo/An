@@ -11,10 +11,11 @@ const app = express();
 //const cors = require('cors')
 
 const {getHomePage} = require('./routes/index');
-const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
+//const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const {addSchedaPage, addScheda, deleteScheda, editScheda, editSchedaPage, viewScheda} = require('./routes/scheda');
 const {viewSchedaOrdinePage,saveSchedaOrdinePage} = require('./routes/ordineScheda');
-const {viewlistaOrdinazioniPage, subDettaglioOrdinazione,viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione,deleteOrdinazione,setDettaglioOrdinazione} = require('./routes/ordinazioni');
+const {viewlistaOrdinazioniPage, subDettaglioOrdinazione, addDettaglioOrdinazione, viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione, deleteOrdinazione} = require('./routes/ordinazioni');
+const {viewlistaOrdinazioniBriPage, subDettaglioOrdinazioneBri, addDettaglioOrdinazioneBri, viewDettaglioOrdinazioneBri, saveOrdinazioneBri} = require('./routes/ordinazioniBrigrata');
 const port = 3000;
 
 if(process.env.NODE_ENV === 'production') {
@@ -44,7 +45,6 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(fileUpload()); // configure fileupload
 
 // routes for the app
-
 app.get('/', getHomePage);
 app.get('/add', addSchedaPage);
 app.get('/viewSchede', viewScheda);
@@ -52,14 +52,19 @@ app.get('/viewSchede', viewScheda);
 app.get('/ordini', viewlistaOrdinazioniPage);
 app.get('/ordini/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
 app.post('/ordini/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
-app.post('/ordini/viewDettaglioOrdinazione/:idOrdine', viewDettaglioOrdinazione);
-app.post('/ordini/viewDettaglioOrdinazione/:id/:idOrdine/', setDettaglioOrdinazione);
+app.post('/ordini/viewDettaglioOrdinazione/:id/:idOrdine/', addDettaglioOrdinazione);
 app.post('/ordini/viewDettaglioOrdinazione/sub/:id/:idOrdine/', subDettaglioOrdinazione);
-
 app.get('/ordini/creaOrdinazione', creaOrdinazione);
 app.post('/ordini/saveOrdinazione', saveOrdinazione);
 app.get('/ordini/deleteOrdinazione/:id', deleteOrdinazione);
 
+app.get('/ordiniBrigata', viewlistaOrdinazioniBriPage);
+app.get('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
+app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazione);
+app.post('/ordiniBrigata/viewDettaglioOrdinazione/:idOrdine', viewDettaglioOrdinazioneBri);
+app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id/:idOrdine/', addDettaglioOrdinazioneBri);
+app.post('/ordiniBrigata/viewDettaglioOrdinazione/sub/:id/:idOrdine/', subDettaglioOrdinazioneBri);
+app.post('/ordiniBrigata/saveOrdinazione', saveOrdinazioneBri);
 
 app.get('/viewSchedaOrdine', viewSchedaOrdinePage);
 app.post('/viewSchedaOrdine/:id', saveSchedaOrdinePage);
@@ -67,8 +72,6 @@ app.get('/editScheda/:id', editSchedaPage);
 
 app.post('/add', addScheda);
 
-app.get('/delete/:id', deletePlayer);
-app.post('/edit/:id', editPlayer);
 // routes for the app
 /*
 app.get('/add', addPlayerPage);

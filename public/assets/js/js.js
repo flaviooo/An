@@ -14,11 +14,7 @@ $(document).ready(function () {
     var _this = $(this);
     var baseURIForm = $(location).attr('href');
     var idOrdine = baseURIForm = baseURIForm.substring(baseURIForm.lastIndexOf('/') + 1, baseURIForm.length);
-    console.log($(event.target).get(0));
-    console.log($(event.target).attr("class"));
-    console.log($(event.currentTarget));
-    console.log($(event.target).val());
-
+    
     let url_setOrder = "";
     if ($(event.target).attr("class") === 'plus') {
       var idDettaglio = _this.prev().attr("id");
