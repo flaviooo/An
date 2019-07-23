@@ -65,8 +65,8 @@ app.get('/ordiniBrigata', viewlistaOrdinazioniBriPage);
 app.get('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazioneBri);
 app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazioneBri);
 app.post('/ordiniBrigata/viewDettaglioOrdinazione/:idOrdine', viewDettaglioOrdinazioneBri);
-app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id/:idOrdine/', addDettaglioOrdinazioneBri);
-app.post('/ordiniBrigata/viewDettaglioOrdinazione/sub/:id/:idOrdine/', subDettaglioOrdinazioneBri);
+//app.post('/ordiniBrigata/viewDettaglioOrdinazione/:id/:idOrdine/', addDettaglioOrdinazioneBri);
+//app.post('/ordiniBrigata/viewDettaglioOrdinazione/sub/:id/:idOrdine/', subDettaglioOrdinazioneBri);
 app.post('/ordiniBrigata/saveOrdinazione', saveOrdinazioneBri);
 
 app.get('/viewSchedaOrdine', viewSchedaOrdinePage);

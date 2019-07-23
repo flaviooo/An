@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/contatoreQuantita.css">
-    <!--<link rel="stylesheet" href="/assets/css/custom.css">-->
+    <link rel="stylesheet" href="/assets/css/custom.css">
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src=" https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -18,12 +19,17 @@
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <script src="/assets/js/js.js"></script>
- 
-  
-    <title><%= title %></title>
+ <title><%= title %></title>
 </head>
 <body>
-      
+    <div id="loading_screen">
+        <h2>Caricamento...</h2> <br />
+        <img  class= "loading" src=" /assets/img/loading.gif" />
+      </div>
+      <script type="text/javascript">
+       $("#loading_screen").show();
+      //mostra_loading_screen();
+      </script>   
 <div class="page-wrapper">
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1"><a href="/">HOME</a></span>
@@ -44,6 +50,4 @@
                 </div>
             </div>
     </nav>
-    <div id="#message" class="alert alert-dark" role="alert">
-       
-      </div>
+    <div id="#message" class="alert alert-dark" role="alert"></div>
