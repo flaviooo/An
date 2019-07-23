@@ -126,7 +126,7 @@ module.exports = {
     let query = " DELETE FROM `angelina`.`an_ordini` WHERE (`idordine` = '" + schedaId + "')";
     console.log(query);
     db.query(query, (err, result) => {
-      console.log(result);
+    //  console.log(result);
       if (err) {
         return res.status(500).send(err);
       }
@@ -257,14 +257,11 @@ module.exports = {
                   //module.exports.viewlistaOrdinazioniPage(req, res);
 
                 });
-
-
               });//4
             });//3	
           });//2	
         });//1
       });//0
     });
-
   }
 }

@@ -1,6 +1,27 @@
 //(function ($) {}(jQuery))
+/*  $(window).load(function() {
+  alert("window load occurred!");
+});  */
+$(window).on("load", function() {  alert("window load occurred!");}); 
 $(document).ready(function () {
+  
+  if (window.addEventListener)
+  {
+    $("#loading_screen").hide();   
+  }else{
+    //window.attachEvent("onload", nascondi_loading_screen);
+    //window.attachEvent("onload", nascondi_loading_screen);
+    $("#loading_screen").show();
+  }
+    /*
+function mostra_loading_screen(){
+  $('#loading_screen").style.display = 'block';
+}
 
+function nascondi_loading_screen(){
+  document.getElementById("loading_screen").style.display = 'none';
+}
+*/
   $('#schedaTable').DataTable(
     { pageLength: 50 }
   );
