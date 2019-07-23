@@ -48,14 +48,14 @@ module.exports = {
         return res.status(500).send(err);
       }
 
-      res.render('viewOrdinazioniById.ejs', {
+      res.render('viewOrdinazioniByIdBrigata.ejs', {
         title: "Welcome to ANies | Ordini"
         , ordine: result
         , message: ''
       });
     });
-  },
-  addDettaglioOrdinazioneBri: (req, res) => {
+  }
+  /* addDettaglioOrdinazioneBri: (req, res) => {
     let schedaId = req.params.id;
     let idOrdine = req.params.idOrdine;
     let queryset = "UPDATE angelina.an_dettaglioordine SET quantita = quantita + 1 WHERE idDettaglioOrdine = '" + schedaId + "' ";
@@ -80,7 +80,7 @@ module.exports = {
           return res.status(500).send(err);
         }
 
-        res.render('viewOrdinazioniById.ejs', {
+        res.render('viewOrdinazioniByIdBrigata.ejs', {
           title: "Welcome to ANies | Ordini"
           , ordine: result
           , message: ''
@@ -120,7 +120,7 @@ module.exports = {
         });
       });
     });
-  },
+  }, 
   deleteOrdinazioneBri: (req, res) => {
     let schedaId = req.params.id;
     let query = " DELETE FROM `angelina`.`an_ordini` WHERE (`idordine` = '" + schedaId + "')";
@@ -130,9 +130,10 @@ module.exports = {
       if (err) {
         return res.status(500).send(err);
       }
-      /*      visualizzo la lita ordini*/
+      //visualizzo la lita ordini
       res.redirect('/ordini');
       // module.exports.viewlistaOrdinazioniPage(req, res);
     });
-  }
+  }  */
+  
 }
