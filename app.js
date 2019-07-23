@@ -15,7 +15,7 @@ const {getHomePage} = require('./routes/index');
 const {addSchedaPage, addScheda, deleteScheda, editScheda, editSchedaPage, viewScheda} = require('./routes/scheda');
 const {viewSchedaOrdinePage,saveSchedaOrdinePage} = require('./routes/ordineScheda');
 const {viewlistaOrdinazioniPage, subDettaglioOrdinazione, addDettaglioOrdinazione, viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione, deleteOrdinazione} = require('./routes/ordinazioni');
-const {viewlistaOrdinazioniBriPage, subDettaglioOrdinazioneBri, addDettaglioOrdinazioneBri, viewDettaglioOrdinazioneBri, saveOrdinazioneBri} = require('./routes/ordinazioniBrigrata');
+const {viewlistaOrdinazioniBriPage, viewDettaglioOrdinazioneBri, saveOrdinazioneBri} = require('./routes/ordinazioniBrigrata');
 const port = 3000;
 
 if(process.env.NODE_ENV === 'production') {

@@ -9,7 +9,7 @@
             // "program": "${workspaceFolder}\\etc\\mySQLtool\\dump.js",
             "program": "${workspaceFolder}\\app.js",
             "args": [
-                "--import",  
+              //  "--import",  
               //"--import", "${workspaceFolder}\\etc\\mySQLtool\\dumps\\dump.sql"
               // "--export"
             ],
