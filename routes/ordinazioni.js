@@ -194,49 +194,40 @@ module.exports = {
 
                 //insert
                 db.query(queryInsert0, (err, result) => {
-                  console.log(result);
                   if (err) {
                     return res.status(500).send(err);
                   }
 
                 });
                 db.query(queryInsert1, (err, result) => {
-                  console.log(result);
                   if (err) {
                     return res.status(500).send(err);
                   }
 
                 });
                 db.query(queryInsert2, (err, result) => {
-                  console.log(result);
                   if (err) {
                     return res.status(500).send(err);
                   }
 
                 });
                 db.query(queryInsert3, (err, result) => {
-                  console.log(result);
                   if (err) {
                     return res.status(500).send(err);
                   }
 
                 });
                 db.query(queryInsert4, (err, result) => {
-                  console.log(result);
                   if (err) {
                     return res.status(500).send(err);
                   }
 
                 });
                 db.query(query5, (err, result) => {
-                  console.log(result);
                   if (err) {
                     return res.status(500).send(err);
                   }
-
                 });
-
-
                 if (error) {
                   return db.rollback(function () {
                     throw error;
