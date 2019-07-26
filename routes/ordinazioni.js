@@ -139,8 +139,9 @@ module.exports = {
     let query0 = "SET FOREIGN_KEY_CHECKS=0;";
     let query1 = "Lock tables `angelina`.`an_ordini` write;";
 
-    let query2 = "SET @ID_ORDINE=(IFNULL((SELECT MAX(idordine)+1 FROM `angelina`.`an_ordini`), 1));";
-    let query3 = "INSERT INTO `angelina`.`an_ordini` (`dataordine`, `costo`, `dataUM`, `stato`, `descrizione`) VALUES (CURRENT_DATE(), '0.00',  NOW(), 'UNDEFINED', concat(@ID_ORDINE,concat('_Ordine_', DATE_FORMAT(dataUM, '%Y-%m-%d'))));";
+    let query3 = "SET @ID_ORDINE=(IFNULL((SELECT MAX(idordine) FROM `angelina`.`an_ordini`), 1));";
+    let query2 = "INSERT INTO `angelina`.`an_ordini` (`dataordine`, `costo`, `dataUM`, `stato`, `descrizione`) "+
+    "VALUES (CURRENT_DATE(), '0.00',  NOW(), 'UNDEFINED', concat( NOW() + 0,concat('_Ordine_', DATE_FORMAT(dataUM, '%Y-%m-%d'))));";
     let query4 = "unlock tables;";
 
     let query5 = "SET FOREIGN_KEY_CHECKS=1;";
