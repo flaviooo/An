@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1 class="mt-5">Lista Schede</h1>
+            <h1 class="mt-5">Lista Ordini</h1>
             <p class="lead">Complete list</p>
             <a class="btn btn-primary" href="/ordini/creaOrdinazione" role="button">Crea un nuovo ordine</a>        
             <div class="table-wrapper">
@@ -34,8 +34,8 @@
                             <td><%= ordine.descrizione %></td>
                             <td>
                                 <a href="/ordini/viewDettaglioOrdinazione/<%= ordine.idordine %>" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/ordini/resocontoOrdinazione/<%= ordine.idordine %>" class="btn btn-sm btn-info">Resoconto</a> 
                                 <a href="/ordini/deleteOrdinazione/<%= ordine.idordine %>" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
                         </tr>
                         <% }) %>
                     </tbody>

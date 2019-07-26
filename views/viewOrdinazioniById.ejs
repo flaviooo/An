@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1 class="mt-5">Lista Schede</h1>
+            <h1 class="mt-5">Lista Ordini</h1>
             <p class="lead">Complete list</p>
 
             <form class="add-scheda-form" action="" method="post" enctype="multipart/form-data">
@@ -13,34 +13,33 @@
                     <table id="ordineTable" class="table table-hovered">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">ID</th>
-
-                                <th data-field="tipo" data-filter-control="select">Status</th>
-                                <th scope="col">articolo</th>
-                                <th scope="col">Last Name</th>
+                                <th data-field="tipo" data-filter-control="select"></th>
+                                <th scope="col">Articolo</th>
+                                <th scope="col">Descrizione</th>
                                 <th scope="col">Fornitore</th>
-                                <th scope="col">Number</th>
+                                <th scope="col">Tot</th>
+                                <th scope="col"></th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <% ordine.forEach((ordine, index) => {  
-                        ordine.image="DSC_0138.JPG"; %>
 
+                            <% ordine.forEach((ordine, index) => {  
+                                ordine.image="DSC_0138.JPG"; %>
                             <tr>
-                                <th><%= ordine.idDettaglioOrdine %></th>
                                 <td><img src="/assets/img/<%= ordine.image %>" class="rounded-circle scheda-img" alt="">
                                 </td>
-                                
                                 <td><%= ordine.tipo %></td>
                                 <td><%= ordine.articolo %></td>
                                 <td><%= ordine.ragionesociale %></td>
+                                <td><%= ordine.totDettaglio %></td>
                                 <td>
-                                       
+
                                     <div class="def-number-input number-input safari_only">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                             class="minus"></button>
-                                        <input id="<%= ordine.idDettaglioOrdine %>"   class="quantity" min="0" name="quantity" placeholder="quantity" 
-                                        value="<%= ordine.quantita %>"
+                                        <input id="<%= ordine.idDettaglioOrdine %>" class="quantity" min="0"
+                                            name="quantity" placeholder="quantity" value="<%= ordine.quantita %>"
                                             type="number">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                             class="plus"></button>
@@ -48,8 +47,16 @@
                                 </td>
                             </tr>
                             <% }) %>
+
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="4" style="text-align:right">Total:</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
                     </table>
+
                     <button type="submit" class="btn btn-success float-right">Update Scheda</button>
                     </br>
                     <% } else { %>

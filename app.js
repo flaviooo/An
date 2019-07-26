@@ -16,6 +16,7 @@ const {addSchedaPage, addScheda, deleteScheda, editScheda, editSchedaPage, viewS
 const {viewSchedaOrdinePage,saveSchedaOrdinePage} = require('./routes/ordineScheda');
 const {viewlistaOrdinazioniPage, subDettaglioOrdinazione, addDettaglioOrdinazione, viewDettaglioOrdinazione, creaOrdinazione, saveOrdinazione, deleteOrdinazione} = require('./routes/ordinazioni');
 const {viewlistaOrdinazioniBriPage, viewDettaglioOrdinazioneBri, saveOrdinazioneBri} = require('./routes/ordinazioniBrigrata');
+const {viewResocontoOrdinazioni} = require('./routes/resoconto');
 const port = 3000;
 
 if(process.env.NODE_ENV === 'production') {
@@ -60,6 +61,7 @@ app.post('/ordini/viewDettaglioOrdinazione/sub/:id/:idOrdine/', subDettaglioOrdi
 app.get('/ordini/creaOrdinazione', creaOrdinazione);
 app.post('/ordini/saveOrdinazione', saveOrdinazione);
 app.get('/ordini/deleteOrdinazione/:id', deleteOrdinazione);
+app.get('/ordini/resocontoOrdinazione/:id', viewResocontoOrdinazioni);
 
 app.get('/ordiniBrigata', viewlistaOrdinazioniBriPage);
 app.get('/ordiniBrigata/viewDettaglioOrdinazione/:id', viewDettaglioOrdinazioneBri);

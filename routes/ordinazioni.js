@@ -37,7 +37,7 @@ module.exports = {
   viewDettaglioOrdinazione: (req, res) => {
     let schedaId = req.params.id;
     // let query = "SELECT * FROM angelina.an_schede WHERE idscheda = '" + schedaId + "' ";
-    query = " SELECT idDettaglioOrdine, tipo, quantita, prezzo, utente, a.articolo, a.prezzounitario , f.ragionesociale" +
+    query = " SELECT idDettaglioOrdine, tipo, quantita, prezzo, utente, a.articolo, a.prezzounitario , f.ragionesociale, totDettaglio" +
       " FROM angelina.an_dettaglioordine doo" +
       " LEFT JOIN angelina.an_articoli a on doo.idarticolo = a.idarticolo" +
       " LEFT JOIN angelina.an_fornitori f on a.ksfornitore = f.idfornitore" +

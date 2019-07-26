@@ -17,3 +17,4 @@
 img.loading{
 margin-top: 20px;
 }
+th { white-space: nowrap; }
