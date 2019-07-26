@@ -58,7 +58,7 @@ module.exports = {
   addDettaglioOrdinazione: (req, res) => {
     let schedaId = req.params.id;
     let idOrdine = req.params.idOrdine;
-    let queryset = "UPDATE angelina.an_dettaglioordine SET quantita = quantita + 1 WHERE idDettaglioOrdine = '" + schedaId + "' ";
+    let queryset = "UPDATE angelina.an_dettaglioordine SET quantita = quantita + 1 , totDettaglio = totDettaglio + prezzo  WHERE idDettaglioOrdine ='" + schedaId + "' ";
     db.query(queryset, (err, result) => {
       if (err) {
         return res.status(500).send(err);
@@ -91,7 +91,7 @@ module.exports = {
   subDettaglioOrdinazione: (req, res) => {
     let schedaId = req.params.id;
     let idOrdine = req.params.idOrdine;
-    let queryset = "UPDATE angelina.an_dettaglioordine SET quantita = quantita - 1 WHERE idDettaglioOrdine = '" + schedaId + "' ";
+    let queryset = "UPDATE angelina.an_dettaglioordine SET quantita = quantita - 1 , totDettaglio = totDettaglio - prezzo WHERE idDettaglioOrdine = '" + schedaId + "' ";
     db.query(queryset, (err, result) => {
       if (err) {
         return res.status(500).send(err);
