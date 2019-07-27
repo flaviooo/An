@@ -31,7 +31,7 @@ module.exports = {
       if (err) {
         return res.status(500).send(err);
       }
-      res.render('viewOrdinazioniById.ejs', {
+      res.render('viewOrdinazioniResocontoById.ejs', {
         title: "Welcome to ANies | Ordini"
         , ordine: result
         , message: ''

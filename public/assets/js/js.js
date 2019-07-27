@@ -6,7 +6,6 @@ $(window).on("load", function() {
     $("#loading_screen").hide();   
   }else{
     //window.attachEvent("onload", nascondi_loading_screen);
-    //window.attachEvent("onload", nascondi_loading_screen);
     $("#loading_screen").show();
   }}); 
 
@@ -16,13 +15,11 @@ $(document).ready(function () {
     { pageLength: 50 }
   );
 
-  $('#ordineTable').DataTable(
+  $('#ordineResocontoTable').DataTable(
       {
          pageLength: 50,
          "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
- 
-            // Remove the formatting to get integer data for summation
             var intVal = function ( i ) {
                 return typeof i === 'string' ?
                     i.replace(/[\$,]/g, '')*1 :
@@ -48,7 +45,8 @@ $(document).ready(function () {
  
             // Update footer
             $( api.column( 4 ).footer() ).html(
-                '$'+pageTotal +' ( $'+ total +' total)'
+              
+                '$'+number_format(pageTotal,2,',','.') +' ( $'+ number_format(pageTotal,2,',','.') +' total)'
             );
         }
       }    
@@ -93,4 +91,54 @@ $(document).ready(function () {
         $(".alert").replaceWith('<div class="alert alert-success" role="alert"><h3>Yeah!!</h3></div>');
       });
   });
+  function toFixedFix(n, precisione) {
+    // Funzione per arrotondare valore
+    var k = Math.pow(10, precisione);            
+    return '' + Math.round(n * k) / k;
+}
+
+function number_format(numero, decimali, dec_separatore, mig_separatore){
+    // Elimino i caratteri che non sono numeri (lascio il segno meno e il punto)
+   // numero = (numero).replace(/[^0-9\.\-]?/gi,"");
+    // Controllo se valore numerico
+    var n = 0;
+    if(isFinite(+numero)){
+        n=numero;
+    }
+    // Controllo se i decimali sono accettabili
+    var precisione = 0;
+    if(isFinite(+decimali) && decimali>-1){
+        precisione = decimali;
+    }
+    // Recupero caratteri separatori
+    var separatore = '.';
+    if(typeof mig_separatore != 'undefined'){
+        separatore = mig_separatore;
+    }
+    var dec = ',';
+    if(typeof dec_separatore != 'undefined'){
+        var dec = dec_separatore;     
+    }
+    
+    // Arrotondo il valore se necessario - Utilizzo funzione toFixedFix
+    var s = '';
+    if(precisione!=0){
+        s = toFixedFix(n, precisione);    
+    }else{
+        s = '' + Math.round(n);
+    }
+    // Taglio il valore in parte intera e parte decimale
+    s = s.split('.');
+    // Aggiungo il separatore delle migliaia - ogni 3 numeri sulla parte intera
+    if (s[0].length > 3) {        
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, separatore);
+    }
+    // Formatto la parte decimale - aggiungo degli 0 se necessari
+    if ((s[1] || '').length < precisione) {
+        s[1] = s[1] || '';
+        s[1] += new Array(precisione - s[1].length + 1).join('0');    
+    }
+    // Aggiungo parte decimale a parte intera - separati da separatore decimali
+    return s.join(dec);
+}
 });
