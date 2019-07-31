@@ -17,7 +17,7 @@ $(document).ready(function () {
 
   $('#ordineResocontoTable').DataTable(
       {
-         pageLength: 50,
+        paging:         false,
          "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
             var intVal = function ( i ) {
@@ -44,8 +44,7 @@ $(document).ready(function () {
                 }, 0 );
  
             // Update footer
-            $( api.column( 4 ).footer() ).html(
-              
+            $( api.column( 4 ).footer() ).html(              
                 '$'+number_format(pageTotal,2,',','.') +' ( $'+ number_format(pageTotal,2,',','.') +' total)'
             );
         }
@@ -67,7 +66,7 @@ $(document).ready(function () {
       var idDettaglio = _this.next().attr("id");
       url_setOrder = "/ordini/viewDettaglioOrdinazione/sub/" + idDettaglio + "/" + idOrdine;
     } else {
-      alert("Url non valido!");
+      //alert("Url non valido!");
       throw new Error("Url non valido!");
     }
 
@@ -141,4 +140,33 @@ function number_format(numero, decimali, dec_separatore, mig_separatore){
     // Aggiungo parte decimale a parte intera - separati da separatore decimali
     return s.join(dec);
 }
+
+var $tabButtonItem = $('#tab-button li'),
+$tabSelect = $('#tab-select'),
+$tabContents = $('.tab-contents'),
+activeClass = 'is-active';
+
+$tabButtonItem.first().addClass(activeClass);
+$tabContents.not(':first').hide();
+
+$tabButtonItem.find('a').on('click', function(e) {
+var target = $(this).attr('href');
+
+$tabButtonItem.removeClass(activeClass);
+$(this).parent().addClass(activeClass);
+$tabSelect.val(target);
+$tabContents.hide();
+$(target).show();
+e.preventDefault();
+});
+
+$tabSelect.on('change', function() {
+var target = $(this).val(),
+  targetSelectNum = $(this).prop('selectedIndex');
+
+$tabButtonItem.removeClass(activeClass);
+$tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+$tabContents.hide();
+$(target).show();
+});
 });

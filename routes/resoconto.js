@@ -21,7 +21,26 @@ module.exports = {
   },
    viewResocontoOrdinazioni: (req, res) => {
     let ordineId = req.params.id;
-    let queryVIEW = "SELECT idDettaglioOrdine, tipo, quantita, prezzo, utente, a.articolo, a.prezzounitario , f.ragionesociale,  totDettaglio" +
+    let queryVIEW = "SELECT idDettaglioOrdine, tipo, quantita, prezzo, utente, a.articolo, a.prezzounitario , f.ragionesociale,  ROUND(totDettaglio,2)" +
+    " FROM angelina.an_dettaglioordine doo " +
+    " LEFT JOIN angelina.an_articoli a on doo.idarticolo = a.idarticolo " +
+    " LEFT JOIN angelina.an_fornitori f on a.ksfornitore = f.idfornitore where idOrdine= '" + ordineId + "' and totDettaglio !=0";
+    console.log("query: " + queryVIEW);
+    db.query(queryVIEW, (err, result) => {
+      //console.log(result);
+      if (err) {
+        return res.status(500).send(err);
+      }
+      res.render('viewOrdinazioniResocontoById.ejs', {
+        title: "Welcome to ANies | Ordini"
+        , ordine: result
+        , message: ''
+      });
+    });
+  },
+  viewResocontoOrdinazioniFAIC: (req, res) => {
+    let ordineId = req.params.id;
+    let queryVIEW = "SELECT idDettaglioOrdine, tipo, quantita, prezzo, utente, a.articolo, a.prezzounitario , f.ragionesociale,  ROUND(totDettaglio,2)" +
     " FROM angelina.an_dettaglioordine doo " +
     " LEFT JOIN angelina.an_articoli a on doo.idarticolo = a.idarticolo " +
     " LEFT JOIN angelina.an_fornitori f on a.ksfornitore = f.idfornitore where idOrdine= '" + ordineId + "' and totDettaglio !=0";

@@ -19,6 +19,6 @@
 * npm install express express-favicon express-fileupload body-parser mysql ejs req-flash dotenv --save
 -- npm install axios 
 -- npm install cors
-* npm install nodemon -g
+* npm install nodemon ejs-lint -g
 
 

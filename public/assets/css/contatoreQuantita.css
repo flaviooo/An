@@ -1,17 +1,4 @@
 
-    .table-wrapper {
-        margin-top: 50px;
-    }
-
-    .scheda-img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .add-scheda-form {
-        margin-top: 50px;
-    }
-
     /* Sezione input +, -*/
     .number-input input[type="number"] {
   -webkit-appearance: textfield;
